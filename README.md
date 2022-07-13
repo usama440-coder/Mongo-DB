@@ -60,3 +60,35 @@ db.inspections.insert([{"name": "usama"}, {"name": "ali"}])
 ```
 db.inspections.insert([{"_id": 1, "test": "1"}, {"_id": 1, "test": "2"}, {"_id": 2, "test": "3"}], {"ordered": false})
 ```
+* In another case: first 2 documents will be inserted successfuly
+```
+db.inspections.insert([{"_id": 1, "test": "1"}, {"_id": 2, "test": "2"}, {"_id": 2, "test": "3"}], {"ordered": false})
+```
+#### updateMany()
+* Update the documents of city 'HUDSON' and increment the 'population' field by 10
+```
+db.zips.updateMany({"city": "HUDSON"}, {"$inc": {"population": 10}})
+```
+#### updateOne()
+* Using of set operator
+```
+db.zips.updateOne({"city": "HUDSON"}, {"$set": {"population": 50000}})
+```
+* Update the document by adding field in a sub array
+```
+db.grades.updateOne({"_id": 250}, {"$push": {"scores": {"type": "extra", "score": 100}}})
+```
+#### deleteMany()
+* Delete all the documents matching the 'test1' crieteria
+```
+db.inspections.deleteMany({"test": 1})
+```
+* To delete the collection
+```
+db.inspections.drop()
+```
+* Delete one document which has the test field of 3
+* Use this if you are having a unique criteria like id
+```
+db.inspections.deleteOne({"_id": 1})
+```
