@@ -39,4 +39,17 @@ db.<collection_name>.find({})
 ```
 it
 ```
+#### insert()
+* Connect
+* Navigate to collection you need
+* Find one document (random)
+```
+db.inspections.findOne()
+```
+* Insert a document
+* Key should be unique
+* Don't write id as it will automatically be generated
+```
+db.inspections.insert({"name": "usama"})
+```
 
