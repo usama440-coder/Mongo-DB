@@ -35,3 +35,8 @@ db.<collection_name>.find({...}).pretty()
 ```
 db.<collection_name>.find({})
 ```
+* iterate for more results
+```
+it
+```
+
