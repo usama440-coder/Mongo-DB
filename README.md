@@ -52,4 +52,11 @@ db.inspections.findOne()
 ```
 db.inspections.insert({"name": "usama"})
 ```
-
+* Insert more than one document
+```
+db.inspections.insert([{"name": "usama"}, {"name": "ali"}])
+```
+* While inserting many documents, if more than one document having same id, it will generate error because of the order. But in case you want to add documents having unique id regardless of some having same id, use following:
+```
+db.inspections.insert([{"_id": 1, "test": "1"}, {"_id": 1, "test": "2"}, {"_id": 2, "test": "3"}], {"ordered": false})
+```
