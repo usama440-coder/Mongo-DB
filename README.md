@@ -19,3 +19,19 @@ show collections
 // show all the documents having state 'NY'
 db.<collection_name>.find({"state": "NY"})
 ```
+* How many operations:
+```
+db.zips.find({"state": "NY"}).count()
+```
+* State is NY but also have city of 'ALBANY'
+```
+db.zips.find({"state": "NY", "city": "ALBANY"}).count()
+```
+* View data in more readable way:
+```
+db.<collection_name>.find({...}).pretty()
+```
+* Find first 20 documents (any 20)
+```
+db.<collection_name>.find({})
+```
