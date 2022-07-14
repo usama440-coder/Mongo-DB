@@ -107,4 +107,16 @@ db.inspections.deleteOne({"_id": 1})
 ```
 db.trips.find({"tripduration": {"$lt": 70}, "usertype": {"$ne": "Subscriber"}})
 ```
-  
+* Logical Operators
+ * and(default), or, not, nor
+```
+// and, or, nor
+{<operator>:[{statement1}, {statement2}...]}
+// not
+{$not: {statement}}
+```
+* Find all documents where airplanes CR2 or A81 left or landed in the KZN airport:
+ * First 'or' airports then 'or' airplanes and finally 'and' both of the results
+```
+db.routes.find({"$and": [{"$or": [{"src_airport": 'KZN'}, {"dst_airport": 'KZN'}]}, {"$or": [{"airplane": 'CR2'}, {"airplane": 'A81'}]}]})
+```
