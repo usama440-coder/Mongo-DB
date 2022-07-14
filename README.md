@@ -120,3 +120,19 @@ db.trips.find({"tripduration": {"$lt": 70}, "usertype": {"$ne": "Subscriber"}})
 ```
 db.routes.find({"$and": [{"$or": [{"src_airport": 'KZN'}, {"dst_airport": 'KZN'}]}, {"$or": [{"airplane": 'CR2'}, {"airplane": 'A81'}]}]})
 ```
+#### Express Query Operator
+* expr
+* use of aggregations statements with the query language
+* ```{$expr: {<expression>}}```
+* dollar sign can be used to find the value
+* conditional statements inside the query
+* in a same document comparison
+* Find all the documents where the trip started and ended at the same station
+```
+db.trips.find({
+  "$expr": {
+      "$eq": ["$end station id", "$start station id"]
+  }
+}).count()
+```
+
