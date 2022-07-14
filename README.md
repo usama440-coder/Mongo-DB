@@ -92,3 +92,19 @@ db.inspections.drop()
 ```
 db.inspections.deleteOne({"_id": 1})
 ```
+### Advance CRUD Operations
+#### Operators
+* Update Operators
+  * Modify the data
+  * Like $inc, $set, $unset
+* Query Operators
+  * Locate data in DB
+  * Aggregation pipeline
+* Comparison Operators (starts with $)
+  * eq(default), ne, gt, lt, gte, lte
+  * {<field>: {<operator>: <value>}}
+* Find documents where **tripduaration** was less than 70 seconds and **usertype** is not subscriber
+```
+db.trips.find({"tripduration": {"$lt": 70}, "usertype": {"$ne": "Subscriber"}})
+```
+  
