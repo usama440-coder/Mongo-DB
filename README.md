@@ -135,4 +135,30 @@ db.trips.find({
   }
 }).count()
 ```
-
+#### Array Operator
+* push
+* size
+ * returns only the documents having specified number inside the array
+ ```
+ {<array_field>: {"$size": <number>}}
+ ```
+* all
+ * returns all the documents having specified elements regardless of their order; otherwise order matters
+ ```
+ {<array_field>: {"$all": <array>}}
+ ```
+* An array returns only exact array matches
+* If you specified a single element only, it will return all the documents having that element in array
+* *Find all documents with exactly 20 amenities which include all the amenities listed in the query array:*
+```
+db.listingsAndReviews.find({ "amenities": {
+                                  "$size": 20,
+                                  "$all": [ "Internet", "Wifi",  "Kitchen",
+                                           "Heating", "Family/kid friendly",
+                                           "Washer", "Dryer", "Essentials",
+                                           "Shampoo", "Hangers",
+                                           "Hair dryer", "Iron",
+                                           "Laptop friendly workspace" ]
+                                         }
+                            }).pretty()
+```
