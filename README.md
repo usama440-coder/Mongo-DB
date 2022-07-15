@@ -162,3 +162,21 @@ db.listingsAndReviews.find({ "amenities": {
                                          }
                             }).pretty()
 ```
+#### Projections
+* Show only specified fields only
+```
+db.collection.find({<query>}, {<projection>})
+```
+* 1 for include the field and 0 to exclude
+ * don't mix both except id having 0 and others 1
+* *Find all documents that have Wifi as one of the amenities only include price and address in the resulting cursor:*
+```
+db.listingsAndReviews.find({"amenities": "Wifi"}, {"price": 1, "address": 1})
+```
+* Accessing the data inside the sub document (array)
+ * elemMatch
+* *Find all documents where the student in class 431 received a grade higher than 85 for any type of assignment:*
+ * Note that second part is the projection (will show id and scores only)
+```
+db.grades.find({"class_id": 431}, {"scores": {"$elemMatch": {"score": {"$gte":85}}}})
+```
