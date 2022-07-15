@@ -176,7 +176,7 @@ db.listingsAndReviews.find({"amenities": "Wifi"}, {"price": 1, "address": 1})
 * Accessing the data inside the sub document (array)
  * elemMatch
 * *Find all documents where the student in class 431 received a grade higher than 85 for any type of assignment:*
- * Note that second part is the projection (will show id and scores only)
+   * Note that second part is the projection (will show id and scores only)
 ```
 db.grades.find({"class_id": 431}, {"scores": {"$elemMatch": {"score": {"$gte":85}}}})
 ```
