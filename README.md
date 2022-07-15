@@ -222,3 +222,17 @@ db.listingsAndReviews.aggregate([
   {"$group": {"_id": "$address.country", "count": {"$sum":1}}}
   ])
 ```
+#### sort() and limit()
+* Cursor operators like pretty() and count() --> end of query
+* Use sort before limit
+* In sort, 1 means increasing order(leat value first) while -1 means decreasing order
+* *Find 5 documents having most population (most to least)*
+```
+db.zips.find().sort({"pop": -1}).limit(5)
+```
+#### Index (Intro)
+* Sorting takes time
+* Just like book index
+```
+db.trips.createIndex({ "birth year": 1 })
+```
