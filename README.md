@@ -180,3 +180,25 @@ db.listingsAndReviews.find({"amenities": "Wifi"}, {"price": 1, "address": 1})
 ```
 db.grades.find({"class_id": 431}, {"scores": {"$elemMatch": {"score": {"$gte":85}}}})
 ```
+#### Array Operations and Sub Documents
+* Using of dot operator
+  * Nesting as we want
+* *Select documents where start station has a type of 'Point'*
+```
+db.companies.find({"offices": {"$elemMatch": {"city": "Seattle"}}}).count()
+```
+* *Find a company name whose first person's last name was 'Zuckerberg'*
+```
+db.companies.find({"relationships.0.person.last_name":"Zuckerberg"}, {"name": 1})
+```
+* *Find **CEO** named **Mark** listed first in the **relationship** array*
+```
+db.companies.find({"relationships.0.person.last_name":"Zuckerberg", "relationships.0.title": {"$regex": "CEO"}}, {"name": 1})
+```
+* Or you can use elemMatch
+```
+db.companies.find({ "relationships":
+                      { "$elemMatch": { "is_past": true,
+                                        "person.first_name": "Mark" } } },
+                  { "name": 1 }).count()
+```
