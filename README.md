@@ -236,3 +236,14 @@ db.zips.find().sort({"pop": -1}).limit(5)
 ```
 db.trips.createIndex({ "birth year": 1 })
 ```
+#### upsert()
+* 3rd argument in the query
+* combination of update and insert
+* insert a new document if valcount is greater than 48 otherwise update it
+```
+db.iot.updateOne({ "sensor": r.sensor, "date": r.date,
+                   "valcount": { "$lt": 48 } },
+                         { "$push": { "readings": { "v": r.value, "t": r.time } },
+                        "$inc": { "valcount": 1, "total": r.value } },
+                 { "upsert": true })
+```
