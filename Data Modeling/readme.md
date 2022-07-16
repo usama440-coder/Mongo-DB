@@ -159,4 +159,18 @@ db.users.aggregate([
     }
   }
 ])
+
+// result
+{ _id: 1,
+  email: 'admin@gmail.com',
+  userId: 'AD',
+  userName: 'admin',
+  user_info: 
+   { _id: ObjectId("56d82612b63f1c31cf906003"),
+     userId: 'AD',
+     phone: '0000000000' },
+  user_role: 
+   [ { _id: ObjectId("56d82612b63f1c31cf906003"),
+       userId: 'AD',
+       role: 'admin' } ] }
 ```
