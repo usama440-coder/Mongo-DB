@@ -175,7 +175,7 @@ db.users.aggregate([
        role: 'admin' } ] }
 ```
 ### Model Relationships
-#### One-to_One Relationshio
+#### One-to_One Relationship
 * Data to be used frequently --> embed
 * Infrequent use of data --> reference
 * **Embed Example**
@@ -231,3 +231,10 @@ db.users.aggregate([
   }
 }
 ```
+#### One-to-Many Relationship
+* If a person has multiple addresses
+  * Sub document as an array (embed)
+* Movie has lot of reviews
+  * Separate collection for movies_reviews (referencing)
+* Be aware of duplication while having referencing
+ 
